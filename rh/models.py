@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Modelos existentes: Funcionarios... (MANTIDO)
 class Funcionarios(models.Model):
     foto = models.ImageField(null=True, blank=True)
     nome = models.CharField(max_length=100)
@@ -36,7 +35,7 @@ class Cliente(models.Model):
     nome_completo = models.CharField(max_length=150)
     idade = models.IntegerField()
     email = models.EmailField()
-    contato = models.CharField(max_length=20) # Para armazenar o telefone/celular
+    contato = models.CharField(max_length=20) 
 
     class Meta:
         verbose_name = "Cliente"
@@ -49,9 +48,9 @@ class Cliente(models.Model):
 class MensagemContato(models.Model):
     nome = models.CharField(max_length=150)
     email = models.EmailField()
-    celular = models.CharField(max_length=20, null=True, blank=True) # NOVO CAMPO
+    celular = models.CharField(max_length=20, null=True, blank=True) 
     assunto = models.CharField(max_length=200)
-    descricao = models.TextField() # Mensagem renomeada para Descricao
+    descricao = models.TextField() 
     data_envio = models.DateTimeField(default=timezone.now)
     lido = models.BooleanField(default=False)
 

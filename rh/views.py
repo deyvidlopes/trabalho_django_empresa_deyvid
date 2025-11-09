@@ -1,13 +1,10 @@
 from django.shortcuts import redirect, render
-# Certifique-se de importar todos os modelos: Funcionarios, Produto e Cliente
 from .models import Funcionarios, Produto, Cliente 
 from .forms import ContatoModelForm
-
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 
-# NOVO: View de Produtos
 def produtos(request):
     # Busca todos os produtos cadastrados
     produtos = Produto.objects.all()
@@ -16,7 +13,6 @@ def produtos(request):
     }
     return render(request,'produtos.html', context)
 
-# NOVO: View de Clientes
 def clientes(request):
     # Busca todos os clientes cadastrados
     clientes = Cliente.objects.all().order_by('nome_completo')
@@ -25,7 +21,7 @@ def clientes(request):
     }
     return render(request,'clientes.html', context)
 
-# View de Funcionários (Deve estar com o nome correto: funcionarios, em minúsculas)
+# FUNÇÃO CORRIGIDA/RESTAURADA
 def funcionarios(request):
     funcionarios = Funcionarios.objects.filter(status=True)
     context = {
