@@ -69,6 +69,15 @@ TEMPLATES = [
     },
 ]
 
+# LOGIN_URL especifica a URL para redirecionar usuários para login.
+LOGIN_URL = 'login'
+
+# LOGIN_REDIRECT_URL especifica a URL para redirecionar usuários após login bem-sucedido.
+LOGIN_REDIRECT_URL = 'home'
+
+# LOGOUT_REDIRECT_URL especifica a URL para redirecionar usuários após logout.
+LOGOUT_REDIRECT_URL= 'login'
+
 WSGI_APPLICATION = 'empresa.wsgi.application'
 
 

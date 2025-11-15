@@ -6,3 +6,5 @@ def posts(request):
     posts = Post.objects.order_by('-criado_em')
     context = {"posts":posts}
     return render(request,'posts.html',context)
+
+
