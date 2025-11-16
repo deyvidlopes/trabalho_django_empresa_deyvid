@@ -11,6 +11,7 @@ from .forms import ContatoModelForm
 
 
 # Create your views here.
+@login_required
 def home(request):
     return render(request,'home.html')
 
@@ -22,6 +23,7 @@ def produtos(request):
     }
     return render(request,'produtos.html', context)
 
+@login_required
 def clientes(request):
     # Busca todos os clientes cadastrados
     clientes = Cliente.objects.all().order_by('nome_completo')
@@ -31,6 +33,7 @@ def clientes(request):
     return render(request,'clientes.html', context)
 
 # FUNÇÃO CORRIGIDA/RESTAURADA
+@login_required
 def funcionarios(request):
     funcionarios = Funcionarios.objects.filter(status=True)
     context = {
@@ -39,6 +42,7 @@ def funcionarios(request):
     return render(request,'funcionarios.html',context)
 
 # A view principal do formulário
+@login_required
 def formulario_contato_view(request):
     if request.method == 'POST':
         form = ContatoModelForm(request.POST)
@@ -54,6 +58,7 @@ def formulario_contato_view(request):
 
 
 # Uma view simples para a página de "sucesso"
+@login_required
 def contato_sucesso_view(request):
     return render(request, 'contato/contato_sucesso.html')
 
@@ -72,6 +77,7 @@ def home(request):
     return render(request, 'home.html', {'visitas': visitas })
 
 # View para realizar login.
+@login_required
 def login_view(request):
     # Se o usuário já estiver autenticado, redireciona para a página inicial.
     if request.user.is_authenticated:
