@@ -8,7 +8,7 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     {% include 'partials/_header.html' %}
@@ -23,8 +23,11 @@
             {% endfor %}
         </div>
     {% endif %}    
-    {% block content %}
+    <main class="login-main">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
+    </main>
+    {% include "components/_footer.html" %}
 </body>
 </html>

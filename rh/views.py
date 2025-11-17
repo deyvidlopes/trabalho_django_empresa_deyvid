@@ -77,7 +77,6 @@ def home(request):
     return render(request, 'home.html', {'visitas': visitas })
 
 # View para realizar login.
-@login_required
 def login_view(request):
     # Se o usuário já estiver autenticado, redireciona para a página inicial.
     if request.user.is_authenticated:

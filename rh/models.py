@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django import forms
+from django.contrib.auth.models import User
 
 class Funcionarios(models.Model):
     foto = models.ImageField(null=True, blank=True)
@@ -61,3 +63,24 @@ class MensagemContato(models.Model):
         verbose_name = "Mensagem de Contato"
         verbose_name_plural = "Mensagens de Contato"
         ordering = ['-data_envio']
+
+
+# rh/forms.py
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Usuário')
+    password = forms.CharField(label='Senha',widget=forms.PasswordInput)
+
+# rh/forms.py
+class RegistroForm(forms.ModelForm):
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirme a senha',widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ('username','email')
+
+    def clean(self):
+        cleaned = super().clean()
+        if cleaned.get('password') != cleaned.get('password2'):
+            raise forms.ValidationError('Senhas diferentes')
+        return cleaned

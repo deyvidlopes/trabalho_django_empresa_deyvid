@@ -1,9 +1,9 @@
 {% extends 'base_login.html' %}
-{% block title %} Home {% endblock %}
+{% block title %}Perfil{% endblock %}
 {% block content%}
-<main>
+<div class="perfil-container">
     <h1>Perfil</h1>
     <p>Último login: {{request.user.last_login }}</p>
     <p>ID de sessão atual: {{request.session.session_key }}</p>
-</main>
+</div>
 {% endblock %}
